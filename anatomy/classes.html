@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<script src="../assets/angular.min.js"></script>
+	<style>
+	.selected{color:blue;}
+	</style>
+</head>
+<body>
+	<table ng-controller="ClassController">
+		<tr ng-repeat="p in ps" ng-class="{selected: $index == selectedRow}" ng-click="hoverTr($index)">
+			<td>{{p.name}}</td>
+			<td>{{p.year}}</td>
+		</tr>
+	</table>
+	<script>
+		var myApp = angular.module('myApp', []);
+		myApp.controller('ClassController', function($scope){
+			$scope.selectedRow = -1;
+
+			$scope.ps = [
+				{name: 'name1', year: 'year1'},
+				{name: 'name2', year: 'year2'}
+			];
+
+			$scope.hoverTr = function(index){
+				$scope.selectedRow = index;
+			};
+		});
+	</script>
+</body>
+</html>

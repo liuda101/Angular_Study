@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<script src="../assets/angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="ShowHideController">
+		<p ng-show="pState">Content</p>
+		<button ng-click="toggleShow()">Toggle</button
+	</div>
+	<script>
+		var myApp = angular.module('myApp', []);
+		myApp.controller('ShowHideController', function($scope){
+
+			$scope.pState = false;
+
+			$scope.toggleShow = function(){
+				$scope.pState = !$scope.pState;
+			};
+
+		});
+	</script>
+</body>
+</html>
