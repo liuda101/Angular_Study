@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<script src="../assets/angular.min.js"></script>
+</head>
+<body>
+	<form ng-controller="StartUpController">
+		Starting:<input ng-change="computedNeeded()" ng-model="startingEstimate">
+		Recommendataion:{{needed}}
+		<button ng-click="reset()">Reset</button>
+	</form>
+	<script>
+		var myApp = angular.module('myApp', []);
+		myApp.controller('StartUpController', function($scope){
+
+			// $scope.needed = 0;
+
+			$scope.computedNeeded = function(){
+				$scope.needed = $scope.startingEstimate * 10;
+			};
+
+			$scope.requestFunding = function(){
+				alert('requestFunding');
+			};
+
+			$scope.reset = function(){
+				// this will not fire the input's change event
+				// so the needed will not be updated
+				// and the {{needed}} is the same
+				// We could use $scope.watch to make the fire happen
+				$scope.startingEstimate = 0;
+			};
+
+			// $scope.$watch('startingEstimate', function(){
+			// 	$scope.needed = $scope.startingEstimate * 10;
+			// });
+		});
+	</script>
+</body>
+</html>
