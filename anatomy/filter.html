@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<script src="../assets/angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="FormatController">
+		<div>{{money | currency}}</div>
+		<div>{{money | myFilter}}</div>
+	</div>
+	<script>
+		var myApp = angular.module('myApp', []);
+		myApp.filter('myFilter', function(){
+			return function(input){
+				return input + '-myFilter';
+			};
+		});
+
+		myApp.controller('FormatController', function($scope){
+			$scope.money = 10.1;
+		});
+	</script>
+</body>
+</html>
